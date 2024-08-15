@@ -1,0 +1,13 @@
+#Configuración de hosts ejemplo: /etc/ansible/hosts
+#host1 ansible_host=10.22.165.29 ansible_user=usuario ansible_port=2224 ansible_ssh_private_key_file=/keys/prueba_local.usuario.10_22_165_29.id_rsa ansible_become_user=root ansible_become_password=Pr0c3s0.
+
+#Ejecutar un comando
+ansible host1 -a "/bin/echo hello"
+
+#Ejecutar un comando como sudo
+#-b es para become sudo
+#Se deben configurar los parámetros ansible_become_user y ansible_become_passworden su host correspondiente
+ansible host1 -b -a "sudo yum update -y"
+
+#Ejecutar un playbook
+ansible-playbook /files/playbook.yaml

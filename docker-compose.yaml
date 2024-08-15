@@ -1,0 +1,18 @@
+services:
+  ansible:
+    container_name: ansible
+    build:
+      context: .
+      dockerfile: ansible.Dockerfile
+    volumes:
+      - ./config/keys:/keys
+      - ./config/files:/files
+      - ./config/files/hosts:/etc/ansible/hosts
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False
+    #command: ["sleep", "inf"]
+    command: ["ansible-playbook", "/files/playbook.yaml"]
+    logging:
+      driver: syslog
+      options:
+        tag: docker-ansible

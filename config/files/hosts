@@ -1,0 +1,28 @@
+artemis:
+  hosts:
+    jupiter:
+      ansible_host: 10.22.165.29
+      ansible_user: usuario
+      ansible_port: 2224
+      ansible_password: Pr0c3s0.
+      #ansible_ssh_private_key_file: /keys/prueba_local.usuario.10_22_165_29.id_rsa
+      ansible_become_user: root
+      ansible_become_password: Pr0c3s0.
+
+    astaroth:
+      #host_key_checking: false
+      ansible_host: 10.22.157.147
+      ansible_user: ansibleuser
+      ansible_port: 22
+      ansible_password: An_Sible.24$
+      #ansible_ssh_private_key_file: /keys/prueba_local.usuario.10_22_165_29.id_rsa
+      ansible_become_user: root
+      ansible_become_password: An_Sible.24$
+
+    jack-o:
+      ansible_host: 10.22.165.29
+      ansible_user: root
+      ansible_port: 2222
+      ansible_password: Pr0c3s0.
+      ansible_become_user: root
+      ansible_become_password: Pr0c3s0.
