@@ -11,7 +11,8 @@ services:
     environment:
       - ANSIBLE_HOST_KEY_CHECKING=False
     #command: ["sleep", "inf"]
-    command: ["ansible-playbook", "/files/playbook.yaml"]
+    #command: ["ansible-playbook", "/files/playbook.yaml"]
+    command: ["ansible-playbook", "/files/centos-lamp-playbook.yaml"]
     logging:
       driver: syslog
       options:

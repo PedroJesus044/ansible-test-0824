@@ -1,0 +1,44 @@
+---
+- name: Install packages
+  hosts: artemis
+
+  tasks:
+  - name: Install git, httpd, mysql
+    become: yes
+    ansible.builtin.yum:
+      name:
+      - httpd
+      - git
+      - mysql-server
+      state: latest
+
+  - name: Enable and start httpd service
+    become: yes
+    ansible.builtin.service:
+      name: httpd
+      enabled: true
+      state: started
+
+  - name: Enable and start mysql services
+    become: yes
+    ansible.builtin.service:
+      name: mysqld
+      enabled: true
+      state: started
+
+  - name: Add httpd port
+    become: yes
+    ansible.posix.firewalld:
+      zone: public
+      service: http
+      state: enabled
+      permanent: yes
+
+  - name: Refresh firewall-cmd
+    become: yes
+    ansible.posix.firewalld:
+      zone: public
+      service: http
+      state: enabled
+      permanent: yes
+      immediate: true
