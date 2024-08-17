@@ -10,9 +10,12 @@ services:
       - ./config/files/hosts:/etc/ansible/hosts
     environment:
       - ANSIBLE_HOST_KEY_CHECKING=False
+      #- ANSIBLE_CALLBACK_WHITELIST=json
+      - ANSIBLE_STDOUT_CALLBACK=logstash
     #command: ["sleep", "inf"]
     #command: ["ansible-playbook", "/files/playbook.yaml"]
     command: ["ansible-playbook", "/files/centos-lamp-playbook.yaml"]
+    #command: ansible-doc -t callback -l
     logging:
       driver: syslog
       options:

@@ -42,3 +42,27 @@
       state: enabled
       permanent: yes
       immediate: true
+
+  - name: update
+    become: yes
+    ansible.builtin.yum:
+      name: "*"
+      state: latest
+
+  - name: xfs_mkfile
+    become: no
+    shell: xfs_mkfile 495M sample.rnd
+
+  - name: get sample.rnd size
+    become: no
+    stat:
+      path: sample.rnd
+    register: file_info
+    
+  - name: Display file size
+    debug:
+      var: file_info.stat
+
+  - name: delete sample.rnd
+    become: no
+    command: rm -rf sample.rnd 
